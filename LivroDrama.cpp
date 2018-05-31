@@ -4,10 +4,11 @@
 
 using namespace std;
 
-LivroDrama::LivroDrama(string cnome, float cvalor, int cqntEstoque, bool coverDura): Livro(cnome, cvalor, cqntEstoque) {
-    capaDura = coverDura;
+LivroDrama::LivroDrama(int id, string nome, float valor, int qntEstoque, bool capaDura):
+    Livro(id, nome, valor, qntEstoque) {
+    this->capaDura = capaDura;
 }
 
 void LivroDrama::setCapaDura(bool capa){
-    capaDura = capa;
+    this->capaDura = capa;
 }

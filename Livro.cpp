@@ -4,15 +4,15 @@
 
 using namespace std;
 
-Livro::Livro(string cnome, float cvalor, int cqntEstoque){
-    nome = cnome;
-    id = 0;
-    valor = cvalor;
-    qntEstoque = cqntEstoque;
+Livro::Livro(int id, string nome, float valor, int qntEstoque){
+    this->nome = nome;
+    this->id = id;
+    this->valor = valor;
+    this->qntEstoque = qntEstoque;
 }
 
 Livro::~Livro(){
-    cout << "Livro destruído" << endl;
+    //cout << "Livro destruído" << endl;
 }
 
 string Livro::getNome(){

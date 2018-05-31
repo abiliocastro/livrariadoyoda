@@ -13,7 +13,7 @@ protected:
     int qntEstoque;
 
 public:
-    Livro(string cnome, float cvalor, int cqntEstoque);
+    Livro(int id, string nome, float valor, int qntEstoque);
 
     virtual ~Livro();
 

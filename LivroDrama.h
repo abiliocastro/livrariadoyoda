@@ -10,7 +10,7 @@ class LivroDrama: public Livro {
 private:
     bool capaDura;
 public:
-    LivroDrama(string cnome, float cvalor, int cqntEstoque, bool coverDura);
+    LivroDrama(int id, string nome, float valor, int qntEstoque, bool capaDura);
     void setCapaDura(bool capa);
 };
 
