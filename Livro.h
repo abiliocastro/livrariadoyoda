@@ -1,6 +1,10 @@
 #ifndef LIVRO_H
 #define LIVRO_H
 
+#include <string>
+
+using namespace std;
+
 class Livro{
 protected:
     string nome;
@@ -13,7 +17,7 @@ public:
 
     virtual ~Livro();
 
-    string getNome();
+    virtual string getNome();
     void setNome(string cnome);
     int getID();
     float getValor();

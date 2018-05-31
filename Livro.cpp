@@ -1,8 +1,12 @@
 #include "Livro.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
 
 Livro::Livro(string cnome, float cvalor, int cqntEstoque){
     nome = cnome;
-    id = gerarID();
+    id = 0;
     valor = cvalor;
     qntEstoque = cqntEstoque;
 }
@@ -25,6 +29,10 @@ int Livro::getID(){
 
 void Livro::setValor(float cvalor){
     valor = cvalor;
+}
+
+float Livro::getValor(){
+    return valor;
 }
 
 int Livro::getQntEstoque(){
