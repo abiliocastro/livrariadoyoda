@@ -13,13 +13,14 @@ protected:
     int qntEstoque;
 
 public:
-    Livro(int id, string nome, float valor, int qntEstoque);
+    Livro(string nome, float valor, int qntEstoque);
 
     virtual ~Livro();
 
     virtual string getNome();
     void setNome(string cnome);
     int getID();
+    void setID(int id);
     float getValor();
     void setValor(float cvalor);
     int getQntEstoque();

@@ -1,11 +1,16 @@
+#include <iostream>
 #include <string>
 #include "LivroAventura.h"
 #include "Livro.h"
 
 using namespace std;
 
-LivroAventura::LivroAventura(int id, string nome, float valor, int qntEstoque, string ilustracoes):
-    Livro(id, nome, valor, qntEstoque) {
+LivroAventura::LivroAventura(string nome, float valor, int qntEstoque, string ilustracoes):
+    Livro(nome, valor, qntEstoque) {
     this->ilustracoes = ilustracoes;
+}
+
+void LivroAventura::toString(){
+    cout << "ID: " << this->id << " | Nome: " << this->nome << " | R$ " << this->valor << " | Existe " << this->qntEstoque << " livro(s) no estoque" << endl;
 }
 

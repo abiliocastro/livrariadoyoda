@@ -1,8 +1,8 @@
 #ifndef LIVROAVENTURA_H
 #define LIVROAVENTURA_H
 
-#include <Livro.h>
 #include <string>
+#include "Livro.h"
 
 using namespace std;
 
@@ -11,8 +11,8 @@ protected:
     string ilustracoes;
 
 public:
-    LivroAventura(int id, string nome, float valor, int qntEstoque, string ilustracoes);
-
+    LivroAventura(string nome, float valor, int qntEstoque, string ilustracoes);
+    void toString();
 };
 
 #endif // LIVROAVENTURA_H

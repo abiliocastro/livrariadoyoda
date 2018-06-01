@@ -1,12 +1,11 @@
-#include "Livro.h"
 #include <iostream>
 #include <string>
+#include "Livro.h"
 
 using namespace std;
 
-Livro::Livro(int id, string nome, float valor, int qntEstoque){
+Livro::Livro(string nome, float valor, int qntEstoque){
     this->nome = nome;
-    this->id = id;
     this->valor = valor;
     this->qntEstoque = qntEstoque;
 }
@@ -16,34 +15,38 @@ Livro::~Livro(){
 }
 
 string Livro::getNome(){
-    return nome;
+    return this->nome;
 }
 
-void Livro::setNome(string cnome){
-    nome = cnome;
+void Livro::setNome(string nome){
+    this->nome = nome;
 }
 
 int Livro::getID(){
-    return id;
+    return this->id;
 }
 
-void Livro::setValor(float cvalor){
-    valor = cvalor;
+void Livro::setID(int id){
+    this->id = id;
+}
+
+void Livro::setValor(float valor){
+    this->valor = valor;
 }
 
 float Livro::getValor(){
-    return valor;
+    return this->valor;
 }
 
 int Livro::getQntEstoque(){
-    return qntEstoque;
+    return this->qntEstoque;
 }
 
-void Livro::setQntEstoque(int cqntEstoque){
-    this->qntEstoque = cqntEstoque;
+void Livro::setQntEstoque(int qntEstoque){
+    this->qntEstoque = qntEstoque;
 }
 
 void Livro::toString(){
-    cout << "ID: " << id << " | Nome: " << nome << " | R$ " << valor << "    | Existe " << qntEstoque << " livro(s) no estoque" << endl;
+    cout << "ID: " << this->id << " | Nome: " << this->nome << " | R$ " << this->valor << " | Existe " << this->qntEstoque << " livro(s) no estoque" << endl;
 }
 

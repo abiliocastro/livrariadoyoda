@@ -1,8 +1,8 @@
 #ifndef LIVROCOMEDIA_H
 #define LIVROCOMEDIA_H
 
-#include <Livro.h>
 #include <string>
+#include "Livro.h"
 
 using namespace std;
 
@@ -11,7 +11,8 @@ protected:
     bool capaBrochura;
 
 public:
-    LivroComedia(int id, string nome, float valor, int qntEstoque, bool capaBrochura);
+    LivroComedia(string nome, float valor, int qntEstoque, bool capaBrochura);
+    void toString();
 };
 
 #endif // LIVROCOMEDIA_H
