@@ -39,9 +39,9 @@ class Livro& Estoque::venderLivro(int key){
     it = this->livros.find(key);
     if(it != livros.end()){
         return it->second;
-    }//    }else{
-//        return it->second;
-//    }
+    }else{
+        return it->second;
+    }
 }
 
 map<int, class Livro&> Estoque::getLivros(){
