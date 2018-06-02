@@ -18,10 +18,13 @@ class ControladorLivros {
 private:
     Estoque estq;
 public:
-    ControladorLivros(Estoque estoque);
-    bool cadastrarLivro(Livro *livro);
+    ControladorLivros(Estoque&);
+    bool cadastrarLivro(Livro&);
+    bool cadastrar();
     void venderLivro(int id);
+    void vender();
     void listLivro();
+    bool manager();
 };
 
 #endif // CONTROLLIVRO_H
