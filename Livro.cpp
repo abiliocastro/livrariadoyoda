@@ -47,6 +47,9 @@ void Livro::setQntEstoque(int qntEstoque){
 }
 
 void Livro::toString(){
-    cout << "ID: " << this->id << " | Nome: " << this->nome << " | R$ " << this->valor << " | Existe " << this->qntEstoque << " livro(s) no estoque" << endl;
+    cout << "ID: " << this->id
+         << " | Nome: " << this->nome
+         << " | R$ " << this->valor
+         << " | Existe " << this->qntEstoque << " livro(s) no estoque" << endl;
 }
 

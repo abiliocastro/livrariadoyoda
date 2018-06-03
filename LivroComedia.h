@@ -12,6 +12,7 @@ protected:
 
 public:
     LivroComedia(string nome, float valor, int qntEstoque, bool capaBrochura);
+
     void toString();
 };
 

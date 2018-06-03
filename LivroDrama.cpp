@@ -15,5 +15,10 @@ void LivroDrama::setCapaDura(bool capa){
 }
 
 void LivroDrama::toString(){
-    cout << "ID: " << this->id << " | Nome: " << this->nome << " | R$ " << this->valor << " | Existe " << this->qntEstoque << " livro(s) no estoque" << endl;
+    string cDura = (this->capaDura) ? ("sim") : ("nao");
+    cout << "ID: " << this->id
+         << " | Nome: " << this->nome
+         << " | R$ " << this->valor
+         << " | Existe " << this->qntEstoque << " livro(s) no estoque"
+         << " | Capa Dura: " << cDura << endl;
 }

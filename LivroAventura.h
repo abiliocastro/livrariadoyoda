@@ -12,6 +12,7 @@ protected:
 
 public:
     LivroAventura(string nome, float valor, int qntEstoque, string ilustracoes);
+
     void toString();
 };
 

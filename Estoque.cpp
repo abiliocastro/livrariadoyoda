@@ -38,7 +38,7 @@ class Livro* Estoque::venderLivro(int key){
     if(it != livros.end()){
         return it->second;
     }else{
-        return it->second;
+        return nullptr;
     }
 }
 

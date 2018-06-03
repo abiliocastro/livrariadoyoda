@@ -21,10 +21,10 @@ int main(){
 
     while(flag){
 
-        cout << "||--------------------||\n";
-        cout << "||  LIVRARIA DO YODA  ||\n";
-        cout << "||Nao vende so yaksoba||\n";
-        cout << "||--------------------||\n";
+        cout << "||----------------------------------------------------------||\n";
+        cout << "||                     LIVRARIA DO YODA                     ||\n";
+        cout << "||                   Nao vende so yaksoba                   ||\n";
+        cout << "||----------------------------------------------------------||\n";
         cout << "[1]Cadastrar Livro [2]Vender Livro [3]Listar Livro [e]Encerrar\n";
         cin >> opc;
 
@@ -35,7 +35,6 @@ int main(){
                         controlador.liberarMemoria();
                         flag = false;
                     }
-                    //system("clear");
                     break;
                 }
             case '2':
@@ -45,7 +44,10 @@ int main(){
                 }
             case '3':
                 {
-                    controlador.listLivro();
+                    if(!controlador.listLivro()){
+                        controlador.liberarMemoria();
+                        flag = false;
+                    }
                     break;
                 }
             case 'e':
@@ -67,13 +69,13 @@ int main(){
 }
 
 void inicializar(ControladorLivros& control){
-    Livro* livro = new Livro("Um Simples Livro", 55.99, 456);
+    //Livro* livro = new Livro("Um Simples Livro", 55.99, 456);
     LivroDrama* livroDrama = new LivroDrama("Drama Interessante", 4.5, 20, true);
     LivroAventura* livroAventura = new LivroAventura("Aventura Fantastica", 10.99, 58, "ilustracao massa");
     LivroComedia* livroComedia = new LivroComedia("Comedia Engracada", 5.99, 10, true);
 
-    control.cadastrarLivro(livro);
-    control.cadastrarLivro(livroDrama);
-    control.cadastrarLivro(livroAventura);
-    control.cadastrarLivro(livroComedia);
+    //control.cadastrarIniciais(livro);
+    control.cadastrarIniciais(livroDrama);
+    control.cadastrarIniciais(livroAventura);
+    control.cadastrarIniciais(livroComedia);
 }

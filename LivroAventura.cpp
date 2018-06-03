@@ -11,6 +11,10 @@ LivroAventura::LivroAventura(string nome, float valor, int qntEstoque, string il
 }
 
 void LivroAventura::toString(){
-    cout << "ID: " << this->id << " | Nome: " << this->nome << " | R$ " << this->valor << " | Existe " << this->qntEstoque << " livro(s) no estoque" << endl;
+    cout << "ID: " << this->id
+         << " | Nome: " << this->nome
+         << " | R$ " << this->valor
+         << " | Existe " << this->qntEstoque << " livro(s) no estoque"
+         << " | Ilustracoes: " << this->ilustracoes << endl;
 }
 
