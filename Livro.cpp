@@ -11,7 +11,7 @@ Livro::Livro(string nome, float valor, int qntEstoque){
 }
 
 Livro::~Livro(){
-    //cout << "Livro destruído" << endl;
+    cout << this->nome << " destruído" << endl;
 }
 
 string Livro::getNome(){

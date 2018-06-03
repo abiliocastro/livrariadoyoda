@@ -9,17 +9,18 @@ using namespace std;
 class Estoque {
 private:
     int id;
-    map<int, class Livro> livros;
+
+    map<int, class Livro*> livros;
     int totEstq;
 
 public:
     Estoque(int totEstq = 0, int id = 0);
 
     int getTotEstoq();
-    bool addLivro(Livro livro);
-    class Livro venderLivro(int id);
-    map<int, class Livro> getLivros();
-    int criaId();
+
+    bool addLivro(Livro* livro);
+    class Livro* venderLivro(int id);
+    map<int, class Livro*> getLivros();
 
 };
 

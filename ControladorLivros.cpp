@@ -12,7 +12,7 @@ ControladorLivros::ControladorLivros(Estoque& estoque){
 }
 
 void ControladorLivros::venderLivro(int id){
-    Livro& livro = this->estq->venderLivro(id);
+    Livro* livro = this->estq.venderLivro(id);
     if(livro != nullptr){
         int qtd = livro->getQntEstoque();
         if(qtd > 0){
@@ -41,10 +41,10 @@ void ControladorLivros::vender(){
 
 void ControladorLivros::listLivro(){
 
-    system("clear");
+    //system("clear");
 
-    for(pair<int,class Livro&> livro: this->estq.getLivros()){
-        livro.second.toString();
+    for(pair<int,class Livro*> livro: this->estq.getLivros()){
+        livro.second->toString();
     }
 }
 
@@ -56,7 +56,7 @@ bool ControladorLivros::manager(){
     cout<<"[m]Menu [e]Encerrar"<<endl;
     cin>>letra;
 
-    system("clear");
+    //system("clear");
 
     if(letra == 'm')
         return true;
@@ -68,12 +68,12 @@ bool ControladorLivros::manager(){
 
     else{
        cout<<"Erro | repita operacao"<<endl;
-       return manager();
+       return this->manager();
     }
 }
 
 
-bool ControladorLivros::cadastrarLivro(Livro& livro){
+bool ControladorLivros::cadastrarLivro(Livro* livro){
     if(this->estq.addLivro(livro))
         return true;
     else
@@ -108,17 +108,26 @@ bool ControladorLivros::cadastrar(){
     // é preciso ter a opçao de escolher o tipo do livro
     // a ser cadastrado.
 
-    Livro l(nome, valor, qntEstoque);
+    Livro* l = new Livro(nome, valor, qntEstoque);
 
 //    l.toString();
 
     if(this->estq.addLivro(l)) {
-        cout << "[@]" << l.getNome() << " cadastrado com sucesso\n";
+        cout << "[@]" << l->getNome() << " cadastrado com sucesso\n";
         return manager();
 
     } else {
         cout << "Não cadastrado\n";
         return manager();
+    }
+}
+
+void ControladorLivros::liberarMemoria(){
+
+    //system("clear");
+
+    for(pair<int,class Livro*> livro: this->estq.getLivros()){
+        delete livro.second;
     }
 }
 

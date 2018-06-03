@@ -19,12 +19,13 @@ private:
     Estoque estq;
 public:
     ControladorLivros(Estoque&);
-    bool cadastrarLivro(Livro&);
+    bool cadastrarLivro(Livro* livro);
     bool cadastrar();
     void venderLivro(int id);
     void vender();
     void listLivro();
     bool manager();
+    void liberarMemoria();
 };
 
 #endif // CONTROLLIVRO_H
