@@ -16,8 +16,8 @@ int Estoque::getTotEstoq(){
     return this->totEstq;
 }
 
-bool Estoque::addLivro(Livro& livro){
-    for(pair<int,class Livro&> l: this->livros){
+bool Estoque::addLivro(Livro livro){
+    for(pair<int,class Livro> l: this->livros){
         if(l.second.getNome() == livro.getNome()) {
 
             int qtd = l.second.getQntEstoque();
@@ -34,7 +34,7 @@ bool Estoque::addLivro(Livro& livro){
     return true;
 }
 
-class Livro& Estoque::venderLivro(int key){
+class Livro Estoque::venderLivro(int key){
     map<int,class Livro&>::iterator it;
     it = this->livros.find(key);
     if(it != livros.end()){
