@@ -14,7 +14,6 @@ protected:
 
 public:
     Livro(string nome, float valor, int qntEstoque);
-
     virtual ~Livro();
 
     virtual string getNome();
@@ -25,7 +24,7 @@ public:
     void setValor(float cvalor);
     int getQntEstoque();
     void setQntEstoque(int cqntEstoque);
-    void toString();
+    virtual void toString() = 0;
 };
 
 #endif // LIVRO_H
