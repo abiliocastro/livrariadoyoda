@@ -6,6 +6,7 @@
 #include "LivroAventura.h"
 #include "LivroComedia.h"
 
+
 using namespace std;
 
 void inicializar(ControladorLivros&);
@@ -30,36 +31,36 @@ int main(){
 
         switch(opc){
             case '1':
-                {
-                    if(!controlador.cadastrar()){
-                        controlador.liberarMemoria();
-                        flag = false;
-                    }
+                if(!controlador.cadastrar()){
+                    controlador.liberarMemoria();
+                    flag = false;
+                }
                     //system("clear");
                     break;
-                }
+
             case '2':
-                {
-                    controlador.vender();
+
+                    system("mario.png");
+                    //controlador.vender();
                     break;
-                }
+
             case '3':
-                {
+
                     controlador.listLivro();
                     break;
-                }
+
             case 'e':
-                {
+
                     controlador.liberarMemoria();
                     flag = false;
                     break;
-                }
+
             default:
-                {
+
                     system("clear");
                     cout << "Opcao invalida\n";
                     break;
-                }
+
         }
     }
 
