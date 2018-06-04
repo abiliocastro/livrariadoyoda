@@ -40,14 +40,14 @@ void ControladorLivros::vender(){
     cout << "   [#]ID -> ";
     cin >> id;
 
-    while(isalpha(id)){
+//    while(isalpha(id)){
 
-        cout << "Apenas numeros sao aceitos" << endl;
-        cout << "   [#]ID -> ";
-        cin >> id;
+//        cout << "Apenas numeros sao aceitos" << endl;
+//        cout << "   [#]ID -> ";
+//        cin >> id;
 
-        system("clear");
-    }
+//        system("clear");
+//    }
 
     int ID = valida(id);
     this->venderLivro(ID);
