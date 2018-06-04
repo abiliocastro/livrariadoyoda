@@ -11,7 +11,7 @@ protected:
     bool capaBrochura;
 
 public:
-    LivroComedia(string nome, float valor, int qntEstoque, bool capaBrochura);
+    LivroComedia(string nome, int valor, int qntEstoque, bool capaBrochura);
 
     void toString();
 };

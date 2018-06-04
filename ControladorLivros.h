@@ -21,15 +21,16 @@ public:
     bool cadastrarIniciais(Livro* livro);
     bool cadastrarLivro(Livro* livro);
     bool cadastrar();
-    LivroAventura* cadastrarAventura(string nome, float valor, int qntEstoque);
-    LivroComedia* cadastrarComedia(string nome, float valor, int qntEstoque);
-    LivroDrama* cadastrarDrama(string nome, float valor, int qntEstoque);
+    LivroAventura* cadastrarAventura(string nome, int valor, int qntEstoque);
+    LivroComedia* cadastrarComedia(string nome, int valor, int qntEstoque);
+    LivroDrama* cadastrarDrama(string nome, int valor, int qntEstoque);
     char selecionarTipo();
     void venderLivro(int id);
     void vender();
     bool listLivro();
     bool manager();
     void liberarMemoria();
-};
+    int valida(char id);
+ };
 
 #endif // CONTROLLIVRO_H

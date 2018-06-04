@@ -40,8 +40,7 @@ int main(){
 
             case '2':
 
-                    system("mario.png");
-                    //controlador.vender();
+                    controlador.vender();
                     break;
 
             case '3':

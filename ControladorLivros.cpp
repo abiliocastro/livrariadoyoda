@@ -7,6 +7,8 @@
 #include "LivroDrama.h"
 #include "Estoque.h"
 #include "ControladorLivros.h"
+#include <stdio.h>
+#include <ctype.h>
 
 using namespace std;
 
@@ -23,7 +25,7 @@ void ControladorLivros::venderLivro(int id){
             livro->setQntEstoque(qtd);
             cout << "Livro vendido com sucesso" << endl;
         } else {
-            cout << "Quantidade do livro igual a 0" << endl;
+            cout << "Nao disponivel no estoque" << endl;
         }
     } else {
         cout << "Livro nao encontrado" << endl;
@@ -33,12 +35,37 @@ void ControladorLivros::venderLivro(int id){
 void ControladorLivros::vender(){
     system("clear");
 
-    int id;
+    char id;
     cout << "[!]Vender Livro:\n";
     cout << "   [#]ID -> ";
     cin >> id;
 
-    this->venderLivro(id);
+    while(isalpha(id)){
+
+        cout << "Apenas numeros sao aceitos" << endl;
+        cout << "   [#]ID -> ";
+        cin >> id;
+
+        system("clear");
+    }
+
+    int ID = valida(id);
+    this->venderLivro(ID);
+
+}
+
+
+int ControladorLivros::valida(char id){
+
+    while(isalpha(id)){
+
+        cout << "Apenas numeros sao aceitos" << endl;
+        cin >> id;
+
+        system("clear");
+    }
+
+    return (int)id-48;
 }
 
 bool ControladorLivros::listLivro(){
@@ -93,8 +120,8 @@ bool ControladorLivros::cadastrar(){
     system("clear");
 
     string nome;
-    float valor;
-    int qntEstoque;
+    char valor;
+    char qntEstoque;
     char tipo;
 
     cout << "[!]Cadastro de Livro:\n";
@@ -106,8 +133,12 @@ bool ControladorLivros::cadastrar(){
     cout << "   [#]Valor -> ";
     cin >> valor;
 
+    int val = valida(valor);
+
     cout << "   [#]Quantidade Estoque -> ";
     cin >> qntEstoque;
+
+    int qtd = valida(qntEstoque);
 
     do{
         tipo = this->selecionarTipo();
@@ -118,16 +149,16 @@ bool ControladorLivros::cadastrar(){
 
     //Tipo foi preenchido
     if(tipo == 'a'){
-        LivroAventura* av = this->cadastrarAventura(nome, valor, qntEstoque);
+        LivroAventura* av = this->cadastrarAventura(nome, val, qtd);
         return this->cadastrarLivro(av);
     } else if(tipo == 'c'){
-        LivroComedia* co = this->cadastrarComedia(nome, valor, qntEstoque);
+        LivroComedia* co = this->cadastrarComedia(nome, val, qtd);
         if(co != nullptr)
             return this->cadastrarLivro(co);
         else
             return this->manager();
     } else if(tipo == 'd') {
-        LivroDrama* dr = this->cadastrarDrama(nome, valor, qntEstoque);
+        LivroDrama* dr = this->cadastrarDrama(nome, val, qtd);
         if(dr != nullptr)
             return this->cadastrarLivro(dr);
         else
@@ -156,7 +187,7 @@ char ControladorLivros::selecionarTipo(){
     }
 }
 
-LivroAventura* ControladorLivros::cadastrarAventura(string nome, float valor, int qntEstoque){
+LivroAventura* ControladorLivros::cadastrarAventura(string nome, int valor, int qntEstoque){
     string ilustracoes;
     cout << "   [#]Digite as ilustracoes -> ";
     cin.ignore();
@@ -166,16 +197,21 @@ LivroAventura* ControladorLivros::cadastrarAventura(string nome, float valor, in
     return l;
 }
 
-LivroComedia* ControladorLivros::cadastrarComedia(string nome, float valor, int qntEstoque){
+LivroComedia* ControladorLivros::cadastrarComedia(string nome, int valor, int qntEstoque){
+
     char selecionar;
     bool selecionado = false;
+
     do{
         cout << "   [#]Capa brochura digite [s] para sim e [n] para nao [x] para cancelar -> ";
         cin >> selecionar;
+
         if(selecionar == 's')
             selecionado = true;
+
         else if(selecionar == 'n')
             selecionado = true;
+
         else if(selecionar == 'x')
             return nullptr;
         else
@@ -187,24 +223,33 @@ LivroComedia* ControladorLivros::cadastrarComedia(string nome, float valor, int 
     return l;
 }
 
-LivroDrama* ControladorLivros::cadastrarDrama(string nome, float valor, int qntEstoque){
+LivroDrama* ControladorLivros::cadastrarDrama(string nome, int valor, int qntEstoque){
+
     char selecionar;
     bool selecionado = false;
+
     do{
         cout << "   [#]Capa dura digite [s] para sim e [n] para nao [x] para cancelar -> ";
         cin >> selecionar;
+
         if(selecionar == 's')
             selecionado = true;
+
         else if(selecionar == 'n')
             selecionado = true;
+
         else if(selecionar == 'x')
             return nullptr;
+
         else
             selecionado = false;
+
     }while(!selecionado);
 
     bool cDura = (selecionar == 's') ? true : false;
+
     LivroDrama* l = new LivroDrama(nome, valor, qntEstoque, cDura);
+
     return l;
 }
 

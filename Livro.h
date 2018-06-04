@@ -9,19 +9,19 @@ class Livro{
 protected:
     string nome;
     int id;
-    float valor;
+    int valor;
     int qntEstoque;
 
 public:
-    Livro(string nome, float valor, int qntEstoque);
+    Livro(string nome, int valor, int qntEstoque);
     virtual ~Livro();
 
     virtual string getNome();
     void setNome(string cnome);
     int getID();
     void setID(int id);
-    float getValor();
-    void setValor(float cvalor);
+    int getValor();
+    void setValor(int cvalor);
     int getQntEstoque();
     void setQntEstoque(int cqntEstoque);
     virtual void toString() = 0;
