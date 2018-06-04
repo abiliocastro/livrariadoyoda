@@ -11,7 +11,7 @@ protected:
     string ilustracoes;
 
 public:
-    LivroAventura(string nome, int valor, int qntEstoque, string ilustracoes);
+    LivroAventura(string nome, float valor, int qntEstoque, string ilustracoes);
 
     void toString();
 };

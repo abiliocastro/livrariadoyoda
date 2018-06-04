@@ -5,7 +5,7 @@
 
 using namespace std;
 
-LivroDrama::LivroDrama(string nome, int valor, int qntEstoque, bool capaDura):
+LivroDrama::LivroDrama(string nome, float valor, int qntEstoque, bool capaDura):
     Livro(nome, valor, qntEstoque) {
     this->capaDura = capaDura;
 }

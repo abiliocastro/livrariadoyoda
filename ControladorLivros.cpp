@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <stdexcept>
 #include <map>
 #include "Livro.h"
 #include "LivroAventura.h"
@@ -7,8 +8,6 @@
 #include "LivroDrama.h"
 #include "Estoque.h"
 #include "ControladorLivros.h"
-#include <stdio.h>
-#include <ctype.h>
 
 using namespace std;
 
@@ -35,37 +34,39 @@ void ControladorLivros::venderLivro(int id){
 void ControladorLivros::vender(){
     system("clear");
 
-    char id;
+    string id;
     cout << "[!]Vender Livro:\n";
     cout << "   [#]ID -> ";
     cin >> id;
 
-    while(isalpha(id)){
-
+    while(!this->validaInteiro(id)){
         cout << "Apenas numeros sao aceitos" << endl;
         cout << "   [#]ID -> ";
         cin >> id;
-
         system("clear");
     }
 
-    int ID = valida(id);
+    int ID = stoi(id);
     this->venderLivro(ID);
 
 }
 
-
-int ControladorLivros::valida(char id){
-
-    while(isalpha(id)){
-
-        cout << "Apenas numeros sao aceitos" << endl;
-        cin >> id;
-
-        system("clear");
+bool ControladorLivros::validaInteiro(string entrada){
+    try {
+        stoi(entrada);
+    } catch (exception&) {
+        return false;
     }
+    return true;
+}
 
-    return (int)id-48;
+bool ControladorLivros::validaFloat(string entrada){
+    try {
+        stof(entrada);
+    } catch (exception&) {
+        return false;
+    }
+    return true;
 }
 
 bool ControladorLivros::listLivro(){
@@ -120,25 +121,34 @@ bool ControladorLivros::cadastrar(){
     system("clear");
 
     string nome;
-    char valor;
-    char qntEstoque;
+    string valor;
+    string qntEstoque;
     char tipo;
 
     cout << "[!]Cadastro de Livro:\n";
     cout << "   [#]Nome -> ";
-
     cin.ignore();
     getline(cin,nome);
 
     cout << "   [#]Valor -> ";
-    cin >> valor;
-
-    int val = valida(valor);
+    getline(cin,valor);
+    while(!this->validaFloat(valor)){
+        cout << "Apenas numeros sao aceitos" << endl;
+        cout << "   [#]Valor -> ";
+        getline(cin,valor);
+        system("clear");
+    }
+    float val = stof(valor);
 
     cout << "   [#]Quantidade Estoque -> ";
     cin >> qntEstoque;
-
-    int qtd = valida(qntEstoque);
+    while(!this->validaInteiro(qntEstoque)){
+        cout << "Apenas numeros sao aceitos" << endl;
+        cout << "   [#]Quantidade Estoque -> ";
+        cin >> qntEstoque;
+        system("clear");
+    }
+    int qtd = stoi(qntEstoque);
 
     do{
         tipo = this->selecionarTipo();
@@ -187,7 +197,7 @@ char ControladorLivros::selecionarTipo(){
     }
 }
 
-LivroAventura* ControladorLivros::cadastrarAventura(string nome, int valor, int qntEstoque){
+LivroAventura* ControladorLivros::cadastrarAventura(string nome, float valor, int qntEstoque){
     string ilustracoes;
     cout << "   [#]Digite as ilustracoes -> ";
     cin.ignore();
@@ -197,7 +207,7 @@ LivroAventura* ControladorLivros::cadastrarAventura(string nome, int valor, int 
     return l;
 }
 
-LivroComedia* ControladorLivros::cadastrarComedia(string nome, int valor, int qntEstoque){
+LivroComedia* ControladorLivros::cadastrarComedia(string nome, float valor, int qntEstoque){
 
     char selecionar;
     bool selecionado = false;
@@ -223,7 +233,7 @@ LivroComedia* ControladorLivros::cadastrarComedia(string nome, int valor, int qn
     return l;
 }
 
-LivroDrama* ControladorLivros::cadastrarDrama(string nome, int valor, int qntEstoque){
+LivroDrama* ControladorLivros::cadastrarDrama(string nome, float valor, int qntEstoque){
 
     char selecionar;
     bool selecionado = false;

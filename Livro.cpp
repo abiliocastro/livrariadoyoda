@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Livro::Livro(string nome, int valor, int qntEstoque){
+Livro::Livro(string nome, float valor, int qntEstoque){
     this->nome = nome;
     this->valor = valor;
     this->qntEstoque = qntEstoque;
@@ -30,11 +30,11 @@ void Livro::setID(int id){
     this->id = id;
 }
 
-void Livro::setValor(int valor){
+void Livro::setValor(float valor){
     this->valor = valor;
 }
 
-int Livro::getValor(){
+float Livro::getValor(){
     return this->valor;
 }
 
